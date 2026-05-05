@@ -8,57 +8,59 @@ for (let run = 1; run <= 2; run++) {
 
         console.log(`\nRunning Test Iteration: ${run}`);
 
-        await page.goto('https://www.naukri.com/');
+        await page.goto('https://www.google.com/');
 
-        // Login
-        await page.getByRole('link', { name: 'Login', exact: true }).click();
-        await page.getByRole('textbox', { name: /Enter your active Email ID/i })
-            .fill('sameer.work3099@gmail.com');
+        // await page.goto('https://www.naukri.com/');
 
-        await page.locator("//input[@placeholder='Enter your password']")
-            .fill('Sohail@9927');
+        // // Login
+        // await page.getByRole('link', { name: 'Login', exact: true }).click();
+        // await page.getByRole('textbox', { name: /Enter your active Email ID/i })
+        //     .fill('sameer.work3099@gmail.com');
 
-        await page.getByRole('button', { name: 'Login', exact: true }).click();
+        // await page.locator("//input[@placeholder='Enter your password']")
+        //     .fill('Sohail@9927');
 
-        // Navigate to Profile
-        await page.locator('.nI-gNb-drawer__bars').click();
-        await page.getByRole('link', { name: 'View & Update Profile' }).click();
+        // await page.getByRole('button', { name: 'Login', exact: true }).click();
 
-        // Edit Basic Details
-        await page.getByRole('emphasis')
-            .filter({ hasText: 'editOneTheme' })
-            .click();
+        // // Navigate to Profile
+        // await page.locator('.nI-gNb-drawer__bars').click();
+        // await page.getByRole('link', { name: 'View & Update Profile' }).click();
 
-        const saveBtn = page.getByRole('button', { name: 'Save' });
+        // // Edit Basic Details
+        // await page.getByRole('emphasis')
+        //     .filter({ hasText: 'editOneTheme' })
+        //     .click();
 
-        await saveBtn.scrollIntoViewIfNeeded();
-        await saveBtn.click();
+        // const saveBtn = page.getByRole('button', { name: 'Save' });
 
-        // Optional popup
-        const popupClose = page.locator('.profileUpdatedProLayer .crossLayer');
+        // await saveBtn.scrollIntoViewIfNeeded();
+        // await saveBtn.click();
 
-        if (await popupClose.count() > 0) {
-            await popupClose.first().click();
-        }
+        // // Optional popup
+        // const popupClose = page.locator('.profileUpdatedProLayer .crossLayer');
 
-        const sections = [
-            '#lazyResumeHead',
-            '#lazyKeySkills',
-            '.emp-list',
-            '#lazyEducation',
-            '#lazyProject',
-            '#lazyProfileSummary',
-            '#lazyDesiredProfile',
-            '#lazyPersonalDetail'
-        ];
+        // if (await popupClose.count() > 0) {
+        //     await popupClose.first().click();
+        // }
 
-        for (const section of sections) {
-            const sectionLocator = page.locator(section).first();
-            await sectionLocator.scrollIntoViewIfNeeded();
+        // const sections = [
+        //     '#lazyResumeHead',
+        //     '#lazyKeySkills',
+        //     '.emp-list',
+        //     '#lazyEducation',
+        //     '#lazyProject',
+        //     '#lazyProfileSummary',
+        //     '#lazyDesiredProfile',
+        //     '#lazyPersonalDetail'
+        // ];
 
-            await page.locator(`${section} .edit.icon`).first().click();
-            await saveBtn.click();
-        }
+        // for (const section of sections) {
+        //     const sectionLocator = page.locator(section).first();
+        //     await sectionLocator.scrollIntoViewIfNeeded();
+
+        //     await page.locator(`${section} .edit.icon`).first().click();
+        //     await saveBtn.click();
+        // }
 
     });
 
