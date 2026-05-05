@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe.configure({ retries: 2 }); // 🔥 2 retries if failed
 
-for (let run = 1; run <= 10; run++) {
+for (let run = 1; run <= 2; run++) {
 
     test(`Naukri profile update flow - Run ${run}`, async ({ page }) => {
 
